@@ -1,0 +1,158 @@
+:root{
+    --background_color: #1b1b1b;
+    --interior_color: #343434;
+    --primary: #ff0741;
+    --aux: #00E6F6;
+}
+
+html,
+body{
+    background-color: var(--background_color);
+    font-family: Helvetica;
+    color: lightgreen;
+    overflow-x: visible;
+}
+
+.hotkeyArea{
+    width:auto;
+    height: max-content;
+    font-family: Helvetica;
+    background-color: var(--interior_color);
+    color: chartreuse;
+    padding: 0.1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    border-radius: 0.5rem;
+}
+
+#questionQueue{
+    display: flex;
+    flex-direction: column;  
+    align-items: center;
+}
+
+#questionQueue div#questionPlaceHolder{
+    font-size:x-small;
+    font-family: Arial;
+    font-weight: bold;
+    color:#da9579;
+}
+
+.QnA_Area{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(40px,1fr));
+    grid-auto-rows: 30px;
+    gap: 5px;
+    align-self:center;
+}
+
+.QnA_Area div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family : Calibri;
+    font-weight: bold;
+    border-radius: 0.2rem;
+    transition-duration: 100ms;
+}
+
+
+.QnA_Area div.downloaded{
+    background-color: green;
+    color: white;
+}
+
+.QnA_Area div.saved{
+    background-color:chocolate;
+    color: white;
+}
+
+.QnA_Area div.failed{
+    background-color:crimson;
+    color: white;
+}
+
+.QnA_Area div.processing{
+    background-color:cornflowerblue;
+    color: white;
+}
+
+.QnA_Area div:hover{
+    background-color: lightblue;
+    color:black;
+    cursor: pointer;
+}
+
+.QnA_Area div:active{
+    background-color: red;
+    color:white;
+}
+
+p.header{
+    font-family: Calibri;
+    text-align: center;
+    font-weight: 800;
+    color:#da858c;
+    margin-top:5px;
+    margin-bottom: 5px;
+}
+.Qheader{
+    background-color: #178098;
+    color: #FFF;
+    font-weight: bolder;
+    width: 98%;
+    text-align: center;
+    font-size: smaller;
+    font-family: Calibri;
+    margin: 10px;
+    border-radius: 3px;
+    padding: 3px;
+
+}
+
+
+.hidden{
+    display:none;
+}
+
+#dwnBtn{
+    --slant:0.7rem;
+    background-color: var(--primary);
+    color: white;
+    font-size:medium;
+    font-family: Calibri;
+    font-weight: bold;
+    border: 0px;
+    border-bottom:3px solid var(--background_color);
+    border-right:3px solid var(--background_color);
+    border-radius: 7px;
+    text-align: center;
+    transition: all 100ms;
+    transition-timing-function: ease-in-out;
+    margin-top: 10px;
+    padding: 5px 5px;
+
+
+}
+
+#dwnBtn:hover{
+    background-color: var(--aux);
+    /* border-radius: 10px; */
+    color:#000;
+    border: 0px;
+    border-radius: 0px 10px 0px 10px;
+    border-top: 3px solid var(--primary);
+    border-left: 3px solid var(--primary);
+}
+
+#dwnBtn:active{
+    color: white;
+    background-color: var(--primary);
+    border:0px;
+    border-radius: 0px 10px 0px 10px;
+    /* transform: translatey(-2px) translateX(-2px); */
+}
+
+
+/*Font-Families : Calibri, Helvetica, monospace, 'Trebucket MS'*/

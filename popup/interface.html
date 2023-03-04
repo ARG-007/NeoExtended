@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeoExtended™</title>
+    <script src="popup.js" type="module"></script>
+    <link rel="stylesheet" href="popupSheet.css" />
+</head>
+
+<body>
+    <div id="default" class="hidden">
+        <p style="color: lightcoral;">No Action Avaliable For This Page</p>
+        <div style="color:lightgreen;">To Use Extension Features Goto :
+            <ul style="margin:2px; list-style: square; color:lightskyblue;">
+                <li>Course Page</li>
+                <li>Test Page</li>
+                <li>Result Page</li>
+            </ul>
+        </div>
+    </div>
+    <div id="coursePage" class="hidden" style="width: 20rem;">
+        <p>Videos Can Now Be Played Simultaneously In Multiple Tabs And Quality Will Be Set At 240p</p>
+        <p>
+            <span style="color: lightcoral">Note:</span>
+            <span style="color: lightskyblue">
+                Does Not Apply To Videos Played In Youtube, By Default Youtube Allows Multiple Videos
+                But Completely Restricts Setting Video Quality
+            </span>
+        </p>
+    </div>
+    <div id="solutionPage" class="hidden">
+        <div class="hotkey">
+            <p class="header">Hotkeys</p>
+            <div class="hotkeyArea"></div>
+        </div>
+    </div>
+    <div id="questionPanel" class="hidden">
+        <div id="questionQueue">
+            <p class="header">Saved Questions</p>
+            <div id="questionPlaceHolder">Captured Questions Appear Here</div>
+            <div class="Qheader">MCQ</div>
+            <div class="QnA_Area MCQ"></div>
+            <div class="Qheader">CODING</div>
+            <div class="QnA_Area CODE"></div>
+            <button id="dwnBtn" type="button">Download</button>
+        </div>
+    </div>
+</body>
+
+</html>

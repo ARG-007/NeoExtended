@@ -1,0 +1,21 @@
+#progress-indicator {
+    width: 50px;
+    height: 50px;
+    background-color: yellow;
+    border-radius: 100px;
+    margin-right: 10px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+#progress-indicator.processing{
+    background-color: cornflowerblue;
+}
+
+#progress-indicator.saved{
+    background-color: chocolate;
+}
+
+#progress-indicator.failed{
+    background-color: crimson;
+}

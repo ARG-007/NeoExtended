@@ -1,0 +1,38 @@
+{
+    "manifest_version":2,
+    "name": "Neo Extended",
+    "version": "2.67",
+    "author": "ARG",
+    "description": "Provides QoL Improvements To Neo Portal",
+    "icons": {
+        "256": "Neo.png"
+    },
+    "content_scripts":[
+        {
+            "matches": ["https://kiot791.examly.io/*"],
+            "js": [
+                "lib/html-to-image.js",
+                "lib/utility.js",
+                "pageScripts/defaultPage.js","pageScripts/testPage.js","pageScripts/resultPage.js","pageScripts/myCoursePage.js",
+                "scriptEnabler.js"
+            ],
+            "css":["pageScripts/elements.css"]
+        }
+    ],
+    "background": {
+        "page":"background/background.html",
+        "persistent":false
+    },
+    "page_action":{
+        "default_popup":"popup/interface.html",
+        "default_icon":"Neo.png",
+        "show_matches":["https://kiot791.examly.io/*"]
+    },
+    "permissions":["clipboardRead","clipboardWrite","downloads","<all_urls>"],
+    "web_accessible_resources":["resources/*"],
+    "browser_specific_settings": {
+        "gecko": {
+          "id": "neo@extended.arg"
+        }
+    }
+}
