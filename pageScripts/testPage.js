@@ -5,24 +5,22 @@ const testPage =
             document.addEventListener("keyup",testPageEventHandler);
             commands = testPageCommands;
             placeHolderImage = testPlaceHolderImage;
-            if(document.querySelector(".section-container #progress-indicator")){
-                document.querySelector(".section-container").removeChild(document.querySelector("#progress-indicator"));
-                document.querySelector(".section-container").appendChild(progressIndicator);
-            }
-            else{
-                document.querySelector(".section-container").appendChild(progressIndicator);
-            }
             QNA.clear();
+            loadIndicator();
         },
         () => {
             document.removeEventListener("keyup",testPageEventHandler);
             commands = null;
             placeHolderImage = null;
-            document.querySelector(".section-container").removeChild(progressIndicator);
             if(QNA.getdownloadStatus() === "NeedToDownload")
                 QNA.status = "orphaned";
             else
                 QNA.clear();
+            try{
+                document.querySelector(".section-container").removeChild(progressIndicator);
+            } catch(e){
+                console.log(e);
+            }
         },
     );
 
@@ -235,4 +233,19 @@ async function captureMCQ(){
 
     QNA.pushQnA(qna);
     QNA.status = "saved";
+}
+
+async function loadIndicator(){
+    try{
+        if(document.querySelector(".section-container #progress-indicator")){
+            document.querySelector(".section-container").removeChild(document.querySelector("#progress-indicator"));
+            document.querySelector(".section-container").appendChild(progressIndicator);
+        }
+        else{
+            document.querySelector(".section-container").appendChild(progressIndicator);
+        }
+    } catch (e){
+        console.log(e);
+        setTimeout(loadIndicator,3000);
+    }
 }
