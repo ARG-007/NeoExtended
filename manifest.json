@@ -29,7 +29,7 @@
         "show_matches":["https://kiot791.examly.io/*"]
     },
     "permissions":["clipboardRead","clipboardWrite","downloads","<all_urls>"],
-    "web_accessible_resources":["resources/*"],
+    "web_accessible_resources":["resources/*","lib/*"],
     "browser_specific_settings": {
         "gecko": {
           "id": "neo@extended.arg"

@@ -1,8 +1,19 @@
+/* 
+Download = #55ba45
+Failed = #f95c58
+Saved = #f5f7fa
+Active = #3456ff
+*/
+
 :root{
-    --background_color: #1b1b1b;
-    --interior_color: #343434;
+    --background_color: #f7f9fc;
+    --interior_color: #ffffff;
     --primary: #ff0741;
     --aux: #00E6F6;
+    --downloaded: #55ba45;
+    --failed: #f95c58;
+    --saved: #ffffff;
+    --active: #3456ff;
 }
 
 html,
@@ -17,6 +28,7 @@ body{
     width:auto;
     height: max-content;
     font-family: Helvetica;
+    border: 2px solid #ececec;
     background-color: var(--interior_color);
     color: chartreuse;
     padding: 0.1rem;
@@ -39,37 +51,51 @@ body{
 }
 
 .QnA_Area{
+    justify-content: center;
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(40px,1fr));
+    grid-template-columns: repeat(6,50px);
     grid-auto-rows: 30px;
     gap: 5px;
-    align-self:center;
 }
 
 .QnA_Area div{
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
     font-family : Calibri;
     font-weight: bold;
+    border: 1px solid #ececec;
     border-radius: 0.2rem;
+    color: black;
     transition-duration: 100ms;
 }
 
+.QnA_Area div::before{
+    content: '';
+    display: inline-block;
+    position: absolute;
+    width: 0%;
+    top: 2px;
+    border: none;
+    border-radius: 10px;
+    height: 3px;
+    background-color: var(--active);
+}
 
 .QnA_Area div.downloaded{
-    background-color: green;
+    background-color: var(--downloaded);
     color: white;
 }
 
 .QnA_Area div.saved{
-    background-color:chocolate;
-    color: white;
+    background-color:var(--saved);
+    color: black;
 }
 
 .QnA_Area div.failed{
-    background-color:crimson;
+    background-color: var(--failed);
     color: white;
 }
 
@@ -81,12 +107,16 @@ body{
 .QnA_Area div:hover{
     background-color: lightblue;
     color:black;
+    transform: scale(110%,110%);
     cursor: pointer;
 }
 
+.QnA_Area div:hover::before{
+    width: 35%;
+}
+
 .QnA_Area div:active{
-    background-color: red;
-    color:white;
+    transform: scale(80%,80%);
 }
 
 p.header{

@@ -17,7 +17,7 @@ const testPage =
             else
                 QNA.clear();
             try{
-                document.querySelector(".section-container").removeChild(progressIndicator);
+                document.querySelector("#section-container").removeChild(progressIndicator);
             } catch(e){
                 console.log(e);
             }
@@ -44,7 +44,7 @@ const testPageCommands = [
 ];
 
 let testPlaceHolderImage;
-fetch(browser.runtime.getURL("lib/imageplaceholders/ResultPage_Portal_Wheatley.png"))
+fetch(browser.runtime.getURL("resources/imageplaceholders/ResultPage_Portal_Wheatley.png"))
 .then(response => response.blob())
 .then(blob => testPlaceHolderImage = blob);
 
@@ -74,11 +74,11 @@ function testPageEventHandler(e){
         text = !!(text) ? text : editor.getValue();
 
         navigator.clipboard.writeText(text);
-        console.log("Copyied");
+        console.log("Copied");
     }
     
     if(e.key=="F1") {
-        if(document.querySelector(".mobile-wrap .question-type").innerText === "Single File Programming Question")
+        if(document.querySelector("[aria-labelledby = question-type]").textContent.trim() === "Single File Programming Question")
             captureQA();
         else
             captureMCQ();
@@ -92,7 +92,7 @@ async function captureQA(){
     let qna;
     
     try{
-        QNA["test"] = document.querySelector(".header-title").innerText.replace(/ /g,"_");
+        QNA["test"] = document.querySelector("[aria-labelledby = header-title]").textContent.trim().replace(/ /g,"_");
     }catch(e){
         QNA["test"] = "_Test_Placeholder_";
         console.log(e);
@@ -103,8 +103,8 @@ async function captureQA(){
         console.log("Saving Code");
         progressIndicator.className = "processing";
 
-        let node = document.querySelector(".question");
-        qna = new CQnA(node.querySelector(".question-no").innerText.replace(" - ",""));
+        let node = document.querySelector("[aria-labelledby = question]");
+        qna = new CQnA("Q"+node.querySelector("[aria-labelledby='question-no font16'] div").textContent.match(/" Question No : (\d+)"/)[1]);
         
         let headEditorID = document.querySelector(".header-content .editor-question").id;
         let editorID = document.querySelector(".editor-answer").id;
@@ -164,7 +164,7 @@ async function captureMCQ(){
     let qna;
     
     try{
-        QNA["test"] = document.querySelector(".header-title").innerText.replace(/ /g,"_");
+        QNA["test"] = document.querySelector("[aria-labelledby = header-title]").textContent.trim().replace(/ /g,"_");
     }catch(e){
         QNA["test"] = "_Test_Placeholder_";
         console.log(e);
@@ -172,12 +172,13 @@ async function captureMCQ(){
 
     try{
         progressIndicator.className="processing";
-        let node = document.querySelector(".question");
-        qna = new MCQnA(node.querySelector(".question-no").innerText.replace(" - ",""));
+        let node = document.querySelector("[aria-labelledby = question]");
+        qna = new MCQnA("Q"+node.querySelector("[aria-labelledby='question-no font16'] div").textContent.match(/" Question No : (\d+)"/)[1]);
 
         let dontFuckitUp = false;
         /* let width = node.scrollWidth; */
-        let editors = node.querySelectorAll(".editor")
+
+        let editors = node.querySelectorAll(".editor");
         editors.forEach(eiq => {
             if (eiq.parentElement.style.display !== "none") {
                 let editor = ace.edit(eiq);
@@ -237,12 +238,12 @@ async function captureMCQ(){
 
 async function loadIndicator(){
     try{
-        if(document.querySelector(".section-container #progress-indicator")){
-            document.querySelector(".section-container").removeChild(document.querySelector("#progress-indicator"));
-            document.querySelector(".section-container").appendChild(progressIndicator);
+        if(document.querySelector("#each-section-panel #progress-indicator")){
+            document.querySelector("#each-section-panel").removeChild(document.querySelector("#progress-indicator"));
+            document.querySelector("#each-section-panel").appendChild(progressIndicator);
         }
         else{
-            document.querySelector(".section-container").appendChild(progressIndicator);
+            document.querySelector("#each-section-panel").appendChild(progressIndicator);
         }
     } catch (e){
         console.log(e);

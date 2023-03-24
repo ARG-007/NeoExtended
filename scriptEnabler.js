@@ -11,6 +11,7 @@ new MutationObserver(loader)
     }
 );
 
+
 document.onload = loader();
 
 function loader(){

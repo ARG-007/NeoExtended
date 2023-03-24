@@ -27,7 +27,7 @@ const resultPageCommands = [
 ];
 
 let resultPlaceHolderImage;
-fetch(browser.runtime.getURL("lib/imageplaceholders/ResultPage_Portal_Wheatley.png"))
+fetch(browser.runtime.getURL("resources/imageplaceholders/ResultPage_Portal_Wheatley.png"))
     .then(response => response.blob())
     .then(blob => resultPlaceHolderImage = blob);
 
